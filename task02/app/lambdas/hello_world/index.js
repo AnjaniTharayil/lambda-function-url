@@ -29,13 +29,14 @@ exports.handler = async (event) => {
   if ((httpMethod === "GET" || httpMethod === "POST") && path === "/hello") {
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Hello from Lambda" }),
+      body: JSON.stringify({ statusCode: 200, message: "Hello from Lambda" }),
     };
   } else {
     // Handle unsupported methods or paths
     return {
       statusCode: 400,
       body: JSON.stringify({
+        statusCode: 400,
         message: `Bad request syntax or unsupported method. Request path: ${
           path || "undefined"
         }. HTTP method: ${httpMethod || "undefined"}`,
